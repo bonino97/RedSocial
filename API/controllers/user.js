@@ -2,8 +2,12 @@
 
 var bcrypt = require('bcrypt-nodejs');
 var mongoosePaginate = require('mongoose-pagination');
+var fs = require('fs');
+var path = require('path');
+
 var jwt = require('../services/jwt');
 var User = require('../models/user');
+
 
 function home(req,res){
     res.status(200).send({
@@ -164,6 +168,60 @@ function updateUser(req,res){
     });
 }
 
+// SUBIR IMAGEN PARA EL USUARIO.
+
+function uploadImage(req,res){
+    var userId = req.params.id;
+
+    if(req.files){
+        var file_path = req.files.image.path; 
+        var file_split = file_path.split('\\');
+        var file_name = file_split[2];
+        var ext_split = file_name.split('\.');
+        var file_ext = ext_split[1];
+
+        if(userId != req.user.sub){
+            return removeFilesOfUploads(res,file_path,'No tienes permiso para actualizar los datos del usuario.');
+        }
+        
+        if(file_ext == 'jpg' || file_ext == 'png' || file_ext == 'jpeg' || file_ext == 'gif'){
+            //SUBIR/ACTUALIZAR IMAGEN.
+            User.findByIdAndUpdate(userId,{image: file_name},{new:true},(err,userUpdated)=>{
+                if(err) return res.status(500).send({message: 'Error en la peticion.'});
+                if(!userUpdated) return res.status(404).send({message: 'No se ha podido actualizar el usuario'});
+                return res.status(200).send({user: userUpdated});
+            });
+        }
+        else{
+            return removeFilesOfUploads(res,file_path,'Extension invalida.');
+        }
+    }
+    else{
+        return res.status(200).send({message: 'No se ha cargado correctamente la imagen.'})
+    }
+}
+
+function removeFilesOfUploads(res,file_path,message){
+    fs.unlink(file_path, (err)=>{
+        return res.status(200).send({message: message})
+    });
+}
+
+function getImageFile(req,res){
+    var image_file = req.params.imageFile;
+    var path_file = './uploads/users/'+image_file;
+
+    fs.exists(path_file,(exists) => {
+        if(exists){
+            res.sendFile(path.resolve(path_file));
+        }
+        else{
+            res.status(200).send({message: 'Imagen inexistente.'});
+        }
+    });
+
+}
+
 module.exports = {
     home,
     pruebas,
@@ -171,5 +229,7 @@ module.exports = {
     loginUser,
     getUser,
     getUsers,
-    updateUser
+    updateUser,
+    uploadImage,
+    getImageFile
 }
