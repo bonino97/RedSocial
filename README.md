@@ -1,6 +1,6 @@
 # RedSocial
-Proyecto Red-Social.
+Project Red-Social.
 
-Aprendiendo MEAN Stack.
+Learning MEAN Stack.
 
-Tecnologias: MongoDB, Express, Angular y NodeJS. 
+Technologies: MongoDB, ExpressJS, Angular y NodeJS. 
