@@ -7,6 +7,8 @@ var app = express();
 
 // CARGAR RUTAS.
 
+var user_routes = require('./routes/user');
+
 // MIDDLEWARES --> METODO QUE SE EJECUTA ANTES DE QUE LLEGUE A UN CONTROLADOR.
 
 app.use(bodyParser.urlencoded({extended:false}))
@@ -16,18 +18,7 @@ app.use(bodyParser.json());
 
 // RUTAS
 
-app.get('/', (req,res) => {
-    res.status(200).send({
-        message: 'Hola Mundo desde el Servidor de NodeJS!' 
-    });
-});      
-
-
-app.get('/pruebas', (req,res) => {
-    res.status(200).send({
-        message: 'Accion de pruebas en el Servidor de NodeJS' 
-    });
-});      
+app.use('/api', user_routes);
 
 //EXPORTAR CONFIGURACIONES
 
