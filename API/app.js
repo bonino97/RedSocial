@@ -8,6 +8,7 @@ var app = express();
 // CARGAR RUTAS.
 
 var user_routes = require('./routes/user');
+var follow_routes = require('./routes/follow');
 
 // MIDDLEWARES --> METODO QUE SE EJECUTA ANTES DE QUE LLEGUE A UN CONTROLADOR.
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 // RUTAS
 
 app.use('/api', user_routes);
+app.use('/api', follow_routes);
 
 //EXPORTAR CONFIGURACIONES
 

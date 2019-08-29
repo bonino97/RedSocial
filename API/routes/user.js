@@ -5,8 +5,12 @@ var multiParty = require('connect-multiparty');
 var UserController = require('../controllers/user');
 
 var api = express.Router();
+
 var md_auth = require('../middlewares/authenticated');
 var md_upload = multiParty({uploadDir:'./uploads/users'});
+
+
+
 
 api.get('/home', UserController.home);
 api.get('/pruebas',md_auth.ensureAuth, UserController.pruebas);
