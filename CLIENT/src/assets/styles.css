@@ -1,3 +1,14 @@
+/*GENERALES*/
+
+.h1-strong{
+    font-size: 33px;
+    font-weight: bold;
+    margin-left: 13px;
+    margin-bottom: 20px;
+    border-bottom:1px solid #eee;
+    padding-bottom: 15px;
+}
+
 /*HEADER*/
 .navigation{
     padding: 0px !important; 
@@ -11,4 +22,11 @@
 
 .navigation .navbar *{
     color: white !important;
+}
+
+/*REGISTER*/
+
+.btn-success{
+    margin-top: 10px;
+    
 }
