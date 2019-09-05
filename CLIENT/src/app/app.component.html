@@ -1,13 +1,12 @@
 <div class="navigation col-lg-12">
   <nav class="navbar navbar-default bg-light">
     <div class="container-fluid">
-      
       <div class="navbar-header">
-        <a href="#" class="navbar-brand">{{title}}</a>
+        <a class="navbar-brand" [routerLink]="['/home']" [routerLinkActive]="['active']">{{title}}</a>
       </div>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" *ngIf="identity">
         <li>
-          <a href="#">
+          <a [routerLink]="['/home']" [routerLinkActive]="['active']">
             <span class="glyphicon glyphicon-home"></span>
             Inicio
           </a>
@@ -23,6 +22,41 @@
             <span class="glyphicon glyphicon-user"></span>
             Gente
           </a>
+        </li>
+      </ul>
+      <ul class="nav navbar navbar-nav navbar-right" *ngIf="!identity">
+          <li>
+            <a [routerLink]="['/login']" [routerLinkActive]="['active']">
+              <span class="glyphicon glyphicon-log-in"></span>
+              Login
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/register']" [routerLinkActive]="['active']">
+              <span class="glyphicon glyphicon-user"></span>
+              Register
+            </a>
+          </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="identity">
+        <li class="avatar">
+          <!-- CARGAR IMAGEN DE USUARIO -->
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            {{identity.name}} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#"><span class="glyphicon glyphicon-user"></span>Perfil</a>
+            </li>
+            <li>
+              <a href="#"><span class="glyphicon glyphicon-cog"></span>Datos</a>
+            </li>
+            <li>
+              <a href="#" class="pointer" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span>Cerrar Sesion</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

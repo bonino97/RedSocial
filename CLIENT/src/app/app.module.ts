@@ -8,17 +8,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 //COMPONENTES
 
-import{LoginComponent} from './components/login/login.component';
-import{RegisterComponent} from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
+import { invoke } from 'q';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

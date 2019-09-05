@@ -1,6 +1,14 @@
 <div class="col-lg-6">
         <h1 class="h1-strong"> {{title}} </h1>
-        <form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-10">
+
+        <div class="alert alert-success" *ngIf="status == 'success'">
+                Registro realizado correctamente, <a [routerLink]="['/login']">Iniciar Sesion.</a>
+        </div>
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+                Usuario o email en uso.
+        </div>
+
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-lg-10">
                 <p>
                         <label>Nombre</label>
                         <input type="text" name="name" #name="ngModel"[(ngModel)]="user.name" class="form-control" required>
@@ -12,13 +20,13 @@
                         <span *ngIf="!surname.valid && surname.touched">Apellido obligatorio.</span>
                 </p>           
                 <p>
-                        <label>Apodo</label>
+                        <label>Usuario</label>
                         <input type="text" name="nick" #nick="ngModel"[(ngModel)]="user.nick" class="form-control" required>
-                        <span *ngIf="!nick.valid && nick.touched">Apodo obligatorio.</span>
+                        <span *ngIf="!nick.valid && nick.touched">Usuario obligatorio.</span>
                 </p>
                 <p>
                         <label>Correo electronico</label>
-                        <input type="email" name="email" #email="ngModel"[(ngModel)]="user.email" class="form-control"pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        <input type="email" name="email" #email="ngModel"[(ngModel)]="user.email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                         <span *ngIf="!email.valid && email.touched">Email invalido.</span>
                 </p>
                 <p>
