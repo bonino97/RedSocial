@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit{
     }
     
     ngOnInit(){
-        console.log('Componente de login cargado...');
+        console.log('Componente de Login cargado...');
     }
 
     onSubmit(){
@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit{
                     this.status = 'error';
                 }
                 else{
-                    this.status = 'success';
                     //PERSISTIR DATOS DEL USUARIO.
                     localStorage.setItem('identity',JSON.stringify(this.identity));
                     //CONSEGUIR EL TOKEN.
@@ -65,7 +64,6 @@ export class LoginComponent implements OnInit{
                     this.status = 'error';
                 }
                 else{
-                    this.status = 'success';
                     //PERSISTIR DATOS DEL USUARIO.
                     localStorage.setItem('token',JSON.stringify(this.token));
                     //CONSEGUIR LOS CONTADORES O ESTADISTICAS DEL USUARIO.
@@ -86,8 +84,9 @@ export class LoginComponent implements OnInit{
     getCounters(){
         this._userService.getCounters().subscribe(
             response =>{
-                console.log(response);
+                
                 localStorage.setItem('stats',JSON.stringify(response));
+                this.status ='success';
                 this._router.navigate(['/']);
             },
             error =>{

@@ -3,17 +3,18 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 //import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { routing, appRoutingProviders } from './app.routing';
+import { invoke } from 'q';
 
 //COMPONENTES
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { routing, appRoutingProviders } from './app.routing';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { AppComponent } from './app.component';
-import { invoke } from 'q';
+
+
 
 
 
@@ -22,7 +23,8 @@ import { invoke } from 'q';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

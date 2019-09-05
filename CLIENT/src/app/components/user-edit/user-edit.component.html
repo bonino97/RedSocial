@@ -1,0 +1,26 @@
+<div class="col-lg-6">
+    <h1 class="h1-strong"> {{title}} </h1>
+    <form #userEditForm="ngForm" (ngSubmit)="onSubmit()" class="col-lg-12">
+        <p>
+            <label>Nombre</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required />
+            <span *ngIf="!name.value && name.touched">Nombre obligatorio.</span>
+        </p>
+        <p>
+            <label>Apellido</label>
+            <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname" class="form-control" required />
+            <span *ngIf="!surname.value && surname.touched">Apellido obligatorio.</span>
+        </p>
+        <p>
+            <label>Usuario</label>
+            <input type="text" name="nick" #nick="ngModel" [(ngModel)]="user.nick" class="form-control" required />
+            <span *ngIf="!nick.value && nick.touched">Usuario obligatorio.</span>
+        </p>
+        <p>
+            <label>Correo electronico</label>
+            <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
+            <span *ngIf="!email.value && email.touched">Correo electronico obligatorio.</span>
+        </p>
+        <input type="submit" value="{{title}}" class="btn btn-warning" [disabled]=!userEditForm.form.valid>
+    </form>
+</div>
