@@ -58,6 +58,19 @@
     background: #eee !important;
 }
 
+.navigation .avatar{
+    width:35px;
+    height: 35px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-top: 9px;
+    margin-right: 2px;
+}
+
+.navigation .avatar img{
+    height: auto;
+    width: 38px;
+}
 
 /*REGISTER*/
 
