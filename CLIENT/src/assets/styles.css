@@ -26,7 +26,7 @@
 .navbar-nav>li>.dropdown-menu .glyphicon{
     margin-right: 7px;
 }
-/*HEADER*/
+
 .navigation{
     padding: 0px !important;
     margin-top: none;
@@ -72,8 +72,40 @@
     width: 38px;
 }
 
-/*REGISTER*/
-
 .btn-success{
     margin-top: 0px;
+}
+
+.item-user .image-user{
+    width:65px;
+    height: 65px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.item-user .image-user img{
+    width: 120px;
+}
+
+.item-user .user-name{
+    margin-top:10px;
+}
+
+.item-user .user-name .nickname{
+    color: #969393;
+}
+
+.item-user .user-name .name-surname a{
+    color: #546faf;
+    font-weight: bold;
+}
+
+.avatar-default{
+    width: 100% !important;
+}
+
+.item-user .pull-right button{
+    margin-right: 3px;
+    margin-left: 3px;
 }

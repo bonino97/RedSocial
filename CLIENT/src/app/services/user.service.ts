@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../models/user';
 import { GLOBAL } from './global';
-import { Params } from '@angular/router';
 
 @Injectable()
     export class UserService{
@@ -11,7 +10,8 @@ import { Params } from '@angular/router';
         public identity;
         public token;
         public stats;
-
+        public status: string;
+        
         constructor(public _http: HttpClient){
             this.url = GLOBAL.url;
         }
@@ -81,5 +81,19 @@ import { Params } from '@angular/router';
                                            .set('Authorization',this.getToken());
 
             return this._http.put(this.url + 'update-user/'+user._id,params,{headers:headers});
+        }
+
+        getUsers(page = null):Observable<any>{
+            let headers = new HttpHeaders().set('Content-Type','application/json')
+                                           .set('Authorization',this.getToken());
+
+            return this._http.get(this.url+'users/'+page,{headers:headers});
+        }
+
+        getUser(id):Observable<any>{
+            let headers = new HttpHeaders().set('Content-Type','application/json')
+                                           .set('Authorization',this.getToken());
+
+            return this._http.get(this.url+'user/'+id,{headers:headers});
         }
     }
