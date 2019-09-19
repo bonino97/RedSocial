@@ -3,7 +3,7 @@
 .h1-strong{
     font-size: 33px;
     font-weight: bold;
-    margin-left: 13px;
+    /* margin-left: 13px; */
     margin-bottom: 20px;
     border-bottom:1px solid #eee;
     padding-bottom: 15px;
@@ -22,6 +22,12 @@
 .pointer{
     cursor:pointer;
 }
+
+.btn-success{
+    margin-top: 0px;
+}
+
+/* CABECERA */
 
 .navbar-nav>li>.dropdown-menu .glyphicon{
     margin-right: 7px;
@@ -72,9 +78,7 @@
     width: 38px;
 }
 
-.btn-success{
-    margin-top: 0px;
-}
+/* GENTE */
 
 .item-user .image-user{
     width:65px;
@@ -85,7 +89,7 @@
 }
 
 .item-user .image-user img{
-    width: 120px;
+    width: 100%;
 }
 
 .item-user .user-name{
@@ -108,4 +112,82 @@
 .item-user .pull-right button{
     margin-right: 3px;
     margin-left: 3px;
+}
+
+/* SIDEBAR */
+.sidebar-32{
+    width: 32% !important;
+    padding: 0px !important;
+}
+
+#user-card{
+    padding: 25px;
+    width: 32%;
+}
+
+#user-card .avatar{
+    width:65px;
+    height: 65px;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+#user-card .avatar img{
+    width: 100%;
+}
+
+#user-card .name-surname{
+    font-weight: 400;
+    font-size: 17px;
+}
+
+#user-card .name-surname a{
+    color: #546faf !important;
+}
+
+#user-card .name-surname .nickname{
+    color: #969393 !important;
+}
+
+#user-card .label-stats,
+#user-card .number-stats{
+    display:block;
+    text-align: center;
+    color: #546faf;
+}
+
+#user-card .label-stats{
+    color: #969696;
+}
+
+#user-card .number-stats{
+    font-weight: bold;
+    color: #555;
+}
+
+#user-card .following-data{
+    float: left;
+    padding-right: 18px;
+    padding-left: 18px; 
+    margin-top: 10px;
+    border-right: 0.7px solid #c4bcbc !important; 
+}
+
+#user-card .following-data:first-child{
+    padding-left: 6px;
+}
+
+#user-card .following-data:last-child{
+    border:none !important;
+}
+
+#user-card .stats{
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+}
+
+#user-card .stats a:hover{
+    text-decoration: none;
+
 }

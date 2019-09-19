@@ -29,7 +29,7 @@
             <input type="text" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
             <span *ngIf="!email.value && email.touched">Correo electronico obligatorio.</span>
         </p>
-        <div *ngIf="user.image">
+        <div *ngIf="user.image" class="">
             <img src="{{url + 'get-image-user/' + user.image}}"/>
         </div>
         <p>
