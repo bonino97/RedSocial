@@ -49,11 +49,34 @@
                     Publicaciones
                 </span>
                 <span class="number-stats">
-                    {{stats.publication}}
+                    {{stats.publications}}
                 </span>
             </a>
         </div>
     </div>
 </div> 
 
-<!-- FORMULARIO DE PUBLICACIONES -->
+<div id="new-publication" class="col-lg-4 pull-left panel panel-default">
+    <div class="alert alert-success" *ngIf="status == 'success'">
+        Publicacion enviada
+    </div>
+    <div class="alert alert-danger" *ngIf="status == 'error'">
+        Error en la publicacion
+    </div>
+    <form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm);sendPublication($event);" class="col-lg-10">
+        <p>
+            <label>¿Que estas pensando?</label>
+            <textarea name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control" required></textarea>
+            <span *ngIf="!text.valid && text.touched">
+                El texto de la publicacion es obligatorio.
+            </span>
+        </p>
+        <p>
+            <label>Subir imagen</label>
+            <input type="file" placeholder="Subir imagen"/>
+            <span class="aux-btn-submit"> 
+                <input type="submit" value="Enviar" class="btn btn-success" [disabled]="!newPubForm.form.valid">
+            </span>
+        </p>
+    </form>
+</div>

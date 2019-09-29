@@ -22,11 +22,6 @@
 .pointer{
     cursor:pointer;
 }
-
-.btn-success{
-    margin-top: 0px;
-}
-
 /* CABECERA */
 
 .navbar-nav>li>.dropdown-menu .glyphicon{
@@ -78,9 +73,10 @@
     width: 38px;
 }
 
-/* GENTE */
+/* USUARIOS */
 
-.item-user .image-user{
+.item-user .image-user,
+.item-publication .image-user{
     width:65px;
     height: 65px;
     border-radius: 100px;
@@ -88,11 +84,13 @@
     margin-right: 15px;
 }
 
-.item-user .image-user img{
+.item-user .image-user img,
+.item-publication .image-user img{
     width: 100%;
 }
 
-.item-user .user-name{
+.item-user .user-name,
+.item-publication .user-name{
     margin-top:10px;
 }
 
@@ -120,7 +118,7 @@
     padding: 0px !important;
 }
 
-#user-card{
+#user-card, #new-publication{
     padding: 25px;
     width: 32%;
 }
@@ -190,4 +188,19 @@
 #user-card .stats a:hover{
     text-decoration: none;
 
+}
+
+#new-publication{
+    padding:18px;
+    padding-left: 8px;
+}
+
+p .aux-btn-submit .btn{
+    margin-top: 12px;
+}
+
+/* TIMELINE */
+
+#publications{
+    min-height: 500px; 
 }
