@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, Input } from '@angular/core';
 import { Router,ActivatedRoute,Params } from '@angular/router';
 import { User } from '../../models/user';
 import { Publication } from '../../models/publication';
@@ -27,6 +27,8 @@ export class PublicationsComponent implements OnInit{
     public publications: Publication[];
     public itemsPerPage;
 
+    @Input() user:string;
+
     constructor(
         private _route: ActivatedRoute,
         private _router: Router,
@@ -42,13 +44,14 @@ export class PublicationsComponent implements OnInit{
 
     ngOnInit(){
         console.log('publications.component cargado correctamente.');
-        this.getPublications(this.page);
+        this.getPublications(this.user,this.page);
     }
 
-    getPublications(page, adding = false){
-        this._publicationService.getPublication(this.token, page).subscribe(
+    getPublications(user, page, adding = false){
+        this._publicationService.getPublicationsUser(this.token,user,page).subscribe(
             response =>{
                 if(response.publications){
+                    console.log(response.publications);
                     this.total = response.total_items;
                     this.pages = response.pages;
                     this.itemsPerPage = response.items_per_page;
@@ -92,6 +95,6 @@ export class PublicationsComponent implements OnInit{
             }
         }
 
-        this.getPublications(this.page, true);
+        this.getPublications(this.user, this.page, true);
     }
 }

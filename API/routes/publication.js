@@ -9,6 +9,7 @@ var md_upload = multiPart({uploadDir: './uploads/publications'});
 
 api.get('/probando',md_auth.ensureAuth,PublicationController.probando);
 api.get('/publications/:page?',md_auth.ensureAuth,PublicationController.getPublications);
+api.get('/publications-user/:user/:page?',md_auth.ensureAuth,PublicationController.getPublicationsUser);
 api.get('/publication/:id',md_auth.ensureAuth,PublicationController.getPublication);
 api.get('/get-image-pub/:imageFile',PublicationController.getImageFile);
 

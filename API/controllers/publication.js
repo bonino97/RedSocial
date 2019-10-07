@@ -69,6 +69,37 @@ function getPublications(req,res){
     });    
 }
 
+function getPublicationsUser(req,res){
+    var page = 1;
+    if(req.params.page){
+        page = req.params.page;
+    }
+    var itemsPerPage = 4;
+    
+    var user = req.user.sub;
+    if(req.params.user){
+        var user = req.params.user;
+    }
+
+    console.log(user);
+
+    Publication.find({user:user})
+    .sort('-created_at')
+    .populate('user')
+    .paginate(page,itemsPerPage,(err,publications,total)=>{
+        if(err) return res.status(500).send({message: 'Error al recuperar las publicaciones.'});
+        if(!publications) return res.status(404).send({message: 'No hay publicaciones.'});
+        return res.status(200).send({
+            total_items:total,
+            pages: Math.ceil(total/itemsPerPage),
+            itemsPerPage:itemsPerPage,
+            page:page, 
+            publications
+        });
+    });   
+}
+
+
 function getPublication(req,res){
     var publicationId = req.params.id;
     
@@ -152,5 +183,6 @@ module.exports = {
     getPublication,
     deletePublication,
     uploadImage,
-    getImageFile
+    getImageFile,
+    getPublicationsUser
 };

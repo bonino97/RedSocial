@@ -26,6 +26,7 @@ export class TimelineComponent implements OnInit{
     public total;
     public publications: Publication[];
     public itemsPerPage;
+    public showImage;
 
     constructor(
         private _route: ActivatedRoute,
@@ -45,7 +46,7 @@ export class TimelineComponent implements OnInit{
     }
 
     getPublications(page, adding = false){
-        this._publicationService.getPublication(this.token, page).subscribe(
+        this._publicationService.getPublications(this.token, page).subscribe(
             response =>{
                 if(response.publications){
                     this.total = response.total_items;
@@ -73,7 +74,7 @@ export class TimelineComponent implements OnInit{
                 var errorMessage = <any>error;
                 console.log(errorMessage);
                 if(errorMessage != null){
-                this.status = 'error';
+                    this.status = 'error';
                 }
             }
         );
@@ -96,5 +97,13 @@ export class TimelineComponent implements OnInit{
 
     refresh(event){
         this.getPublications(1);
+    }
+
+    showThisImage(id){
+        this.showImage = id;
+    }
+
+    hideThisImage(id){
+        this.showImage = 0;
     }
 }
