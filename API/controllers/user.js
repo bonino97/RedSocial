@@ -328,7 +328,6 @@ function updateUser(req,res){
         {email: update.email.toLowerCase()},
         {nick: update.nick.toLowerCase()}
     ]}).exec((err,users)=>{
-        console.log(users);
         var user_isset = false;
         users.forEach((user)=>{
             if(user && user._id != userId) user_isset = true;

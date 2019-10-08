@@ -39,19 +39,27 @@ export class SidebarComponent implements OnInit{
         ngOnInit(){
         }
         
-        onSubmit(form){
+        onSubmit(form, $event){
             this._publicationService.addPublication(this.token, this.publication).subscribe(
                 response => {
                     if(response.publication){
                         //this.publication = response.publication;
-                        //SUBIR IMAGEN
-                        this._uploadService.makeFileRequest(this.url+'upload-image-pub/'+response.publication._id,[],this.filesToUpload,this.token,'image')
-                                           .then((result:any)=>{
-                                               this.publication.file = result.image;
-                                               this.status = 'success';
-                                               form.reset();
-                                               this._router.navigate(['/timeline']);
-                                           });
+                        if(this.filesToUpload && this.filesToUpload.length){ 
+                            //SUBIR IMAGEN
+                            this._uploadService.makeFileRequest(this.url+'upload-image-pub/'+response.publication._id,[],this.filesToUpload,this.token,'image')
+                                            .then((result:any)=>{
+                                                this.publication.file = result.image;
+                                                this.status = 'success';
+                                                form.reset();
+                                                this._router.navigate(['/timeline']);
+                                                this.sended.emit({send:'true'});
+                                            });
+                        }else{
+                            this.status = 'success';
+                            form.reset();
+                            this._router.navigate(['/timeline']);
+                            this.sended.emit({send:'true'});
+                        }
                     }
                     else{
                         this.status = 'error';

@@ -81,8 +81,6 @@ function getPublicationsUser(req,res){
         var user = req.params.user;
     }
 
-    console.log(user);
-
     Publication.find({user:user})
     .sort('-created_at')
     .populate('user')

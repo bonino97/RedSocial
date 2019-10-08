@@ -22,7 +22,7 @@
     <div class="clearfix"></div>
     <div class="stats" *ngIf="stats">
         <div class="following-data">
-            <a href="#">
+            <a [routerLink]="['/siguiendo',identity._id,1]">
                 <span class="label-stats">
                     Siguiendo
                 </span>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="following-data">
-            <a href="#">
+            <a [routerLink]="['/seguidores',identity._id,1]">
                 <span class="label-stats">
                     Seguidores
                 </span>
@@ -44,7 +44,7 @@
         </div>
 
         <div class="following-data">
-            <a href="#">
+            <a [routerLink]="['/perfil',identity._id]">
                 <span class="label-stats">
                     Publicaciones
                 </span>
@@ -63,7 +63,7 @@
     <div class="alert alert-danger" *ngIf="status == 'error'">
         Error en la publicacion
     </div>
-    <form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm);sendPublication($event);" class="col-lg-10">
+    <form #newPubForm="ngForm" (ngSubmit)="onSubmit(newPubForm, $event)" class="col-lg-10">
         <p>
             <label>¿Que estas pensando?</label>
             <textarea name="text" #text="ngModel" [(ngModel)]="publication.text" class="form-control" required></textarea>

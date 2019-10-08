@@ -11,6 +11,9 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UsersComponent } from './components/users/users.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FollowingComponent } from './components/following/following.component';
+import { FollowedComponent } from './components/followed/followed.component';
+
 
 const appRoutes: Routes = [
     {path: '',component:HomeComponent},
@@ -22,6 +25,8 @@ const appRoutes: Routes = [
     {path: 'gente',component: UsersComponent},
     {path: 'timeline',component: TimelineComponent},
     {path: 'perfil/:id',component: ProfileComponent},
+    {path: 'siguiendo/:id/:page',component: FollowingComponent},
+    {path: 'seguidores/:id/:page',component: FollowedComponent},
     {path: '**',component: HomeComponent}
 ];
 
