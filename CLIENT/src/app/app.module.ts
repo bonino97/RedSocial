@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-//import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { MomentModule } from 'angular2-moment';
+
+//MODULO CUSTOM
+import { MessagesModule } from './messages/messages.module';
 
 //COMPONENTES
 
@@ -20,6 +22,7 @@ import { PublicationsComponent } from './components/publications/publications.co
 import { ProfileComponent } from './components/profile/profile.component';
 import { FollowingComponent } from './components/following/following.component';
 import { FollowedComponent } from './components/followed/followed.component';
+
 
 
 
@@ -44,7 +47,8 @@ import { FollowedComponent } from './components/followed/followed.component';
     routing,
     FormsModule,
     HttpClientModule,
-    MomentModule
+    MomentModule,
+    MessagesModule
   ],
   providers: [
     appRoutingProviders
